@@ -33,7 +33,7 @@ namespace BattleNet.Connections
             m_stream = m_socket.GetStream();
             if (!m_stream.CanWrite)
             {
-                Logging.Logger.Write("Failed To connect to {0}:{1}", server,port);
+                Logging.Logger.Write("Failed To connect to {0}:{1}", server, port);
                 return false;
             }
 

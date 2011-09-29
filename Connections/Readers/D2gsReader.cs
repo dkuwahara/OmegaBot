@@ -49,10 +49,7 @@ namespace BattleNet.Connections.Readers
         public event NoParam NextGame;
         public void Die()
         {
-            if (m_connection.Socket.Connected)
-            {
-                m_connection.Socket.Close();
-            }
+            m_connection.Close();
             OnUpdateStatus(Client.Status.STATUS_NOT_IN_GAME);
             NextGame();
         }
@@ -272,6 +269,7 @@ namespace BattleNet.Connections.Readers
                     }
                 }
             }
+            Die();
         }
     }
 }

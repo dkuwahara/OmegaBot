@@ -52,7 +52,7 @@ namespace BattleNet
         public NpcEntity()
         { }
 
-        public NpcEntity(UInt32 id, UInt32 type, UInt32 life, Int32 x, Int32 y) :
+        public NpcEntity(UInt32 id, UInt32 type, UInt32 life, UInt16 x, UInt16 y) :
             base(id,x,y)
         {
             m_type = type;

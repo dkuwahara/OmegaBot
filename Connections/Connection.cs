@@ -95,6 +95,7 @@ namespace BattleNet.Connections
         {
             m_stream.Close();
             m_socket.Close();
+            m_packetsReady.Close();
         }
 
         #endregion

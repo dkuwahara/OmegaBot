@@ -21,7 +21,7 @@ namespace BattleNet.Connections.Handlers
             {
                 if (m_connection.Packets.IsEmpty())
                 {
-                    m_connection.PacketsReady.WaitOne();
+                    //m_connection.PacketsReady.WaitOne();
                 }
                 else
                 {
@@ -34,6 +34,7 @@ namespace BattleNet.Connections.Handlers
                     DispatchPacket(type)(type, packet);
                 }
             }
+            Logger.Write("D2GS Handler Ending...");
         }
 
         public delegate void PingStarter();
@@ -58,6 +59,7 @@ namespace BattleNet.Connections.Handlers
                 case 0x22: return ItemSkillBonus;
                 case 0x26: return ChatMessage;
                 case 0x27: return NpcInteraction;
+                case 0x51: return WorldObject;
                 case 0x5b: return PlayerJoins;
                 case 0x5c: return PlayerLeaves;
                 case 0x59: return InitializePlayer;
@@ -96,6 +98,20 @@ namespace BattleNet.Connections.Handlers
                               nulls, nulls);
              */
             m_connection.Write(packet.ToArray());
+        }
+        public delegate void NewEntity(UInt16 type, WorldObject ent);
+        public event NewEntity UpdateWorldObject;
+        protected void WorldObject(byte type, List<byte> data)
+        {
+            byte[] packet = data.ToArray();
+            if (packet[1] == 0x02)
+            {
+                UInt16 obj = BitConverter.ToUInt16(packet, 6);
+                UpdateWorldObject(obj, new WorldObject(BitConverter.ToUInt32(packet, 2),
+                                                    obj,
+                                                    BitConverter.ToUInt16(packet, 8),
+                                                    BitConverter.ToUInt16(packet, 10)));
+            }
         }
 
         protected void StartPingThread(byte type, List<byte> data)
@@ -143,6 +159,7 @@ namespace BattleNet.Connections.Handlers
 
         protected void PlayerMove(byte type, List<byte> data)
         {
+            Logger.Write("A player is moving");
             byte[] packet = data.ToArray();
             UInt32 playerId = BitConverter.ToUInt32(packet, 2);
             Coordinate coords = new Coordinate(BitConverter.ToUInt16(packet, 7), BitConverter.ToUInt16(packet, 9));
@@ -217,6 +234,7 @@ namespace BattleNet.Connections.Handlers
         private bool firstInfoPacket;
         private bool talkedToNpc;
 
+        public event NoParams NpcTalkedEvent = delegate { };
         protected void NpcInteraction(byte type, List<byte> data)
         {
             if (firstInfoPacket)
@@ -227,6 +245,7 @@ namespace BattleNet.Connections.Handlers
                 talkedToNpc = true;
                 UInt32 id = BitConverter.ToUInt32(data.ToArray(), 2);
                 m_connection.Write(m_connection.BuildPacket(0x2f, one, BitConverter.GetBytes(id)));
+                NpcTalkedEvent();
             }
         }
 
@@ -260,18 +279,15 @@ namespace BattleNet.Connections.Handlers
         public event NewPlayer InitMe = delegate { };
         protected void InitializePlayer(byte type, List<byte> data)
         {
-            if (me == null || !me.Initialized)
-            {
-                byte[] packet = data.ToArray();
-                UInt32 id = BitConverter.ToUInt32(packet, 1);
-                Globals.CharacterClassType charClass = (Globals.CharacterClassType)data[5];
-                String name = BitConverter.ToString(packet, 6, 15);
-                UInt32 x = BitConverter.ToUInt16(packet, 22);
-                UInt32 y = BitConverter.ToUInt16(packet, 24);
-                Player newPlayer = new Player(name, id, charClass, m_level, (int)x, (int)y);
-                me = newPlayer;
-                InitMe(me);
-            }
+            byte[] packet = data.ToArray();
+            UInt32 id = BitConverter.ToUInt32(packet, 1);
+            Globals.CharacterClassType charClass = (Globals.CharacterClassType)data[5];
+            String name = BitConverter.ToString(packet, 6, 15);
+            UInt16 x = BitConverter.ToUInt16(packet, 22);
+            UInt16 y = BitConverter.ToUInt16(packet, 24);
+            Player newPlayer = new Player(name, id, charClass, m_level, x, y);
+            me = newPlayer;
+            InitMe(me);
         }
 
         public delegate void NpcUpdateDel(UInt32 id, Coordinate coord, bool moving, bool running);
@@ -281,8 +297,8 @@ namespace BattleNet.Connections.Handlers
             byte[] packet = data.ToArray();
             UInt32 id = BitConverter.ToUInt32(packet, 1);
             byte movementType = packet[5];
-            Int32 x = BitConverter.ToUInt16(packet, 6);
-            Int32 y = BitConverter.ToUInt16(packet, 8);
+            UInt16 x = BitConverter.ToUInt16(packet, 6);
+            UInt16 y = BitConverter.ToUInt16(packet, 8);
             bool running;
             if (movementType == 0x17)
                 running = true;
@@ -300,8 +316,8 @@ namespace BattleNet.Connections.Handlers
             byte[] packet = data.ToArray();
             UInt32 id = BitConverter.ToUInt32(packet, 1);
             byte movementType = packet[5];
-            Int32 x = BitConverter.ToUInt16(packet, 6);
-            Int32 y = BitConverter.ToUInt16(packet, 8);
+            UInt16 x = BitConverter.ToUInt16(packet, 6);
+            UInt16 y = BitConverter.ToUInt16(packet, 8);
             bool running;
             if (movementType == 0x18)
                 running = true;
@@ -418,7 +434,8 @@ namespace BattleNet.Connections.Handlers
         public event ItemUpdate NewItem = delegate { };
         protected void ItemAction(byte type, List<byte> data)
         {
-            
+            Item item = Items.Parser.Parse(data);
+            NewItem(item);
         }
 
         public static bool BitScanReverse(out int index, ulong mask)
@@ -431,13 +448,120 @@ namespace BattleNet.Connections.Handlers
             }
             return mask == 1;
         }
-
+        public delegate void AddNpcDelegate(NpcEntity npc);
+        public event AddNpcDelegate AddNpcEvent;
         protected void NpcAssignment(byte type, List<byte> data)
         {
+            byte[] packet = data.ToArray();
+            NpcEntity output;
+            //try
+            //{
+            BitReader br = new BitReader(data.ToArray());
+            br.ReadBitsLittleEndian(8);
+            UInt32 id = (uint)br.Read(32);
+            UInt16 npctype = (ushort)br.Read(16);
+            UInt16 x = (ushort)br.Read(16);
+            UInt16 y = (ushort)br.Read(16);
+            byte life = (byte)br.Read(8);
+            byte size = (byte)br.Read(8);
+
+            output = new NpcEntity(id, npctype, life, x, y);
+
+            int informationLength = 16;
+
+            String[] entries;
+
+            if (!DataManager.Instance.m_monsterFields.Get(npctype, out entries))
+                Logger.Write("Failed to read monstats data for NPC of type {0}", type);
+            if (entries.Length != informationLength)
+                Logger.Write("Invalid monstats entry for NPC of type {0}", type);
+
+            bool lookupName = false;
+
+            if (data.Count > 0x10)
+            {
+                br.Read(4);
+                if (br.ReadBit())
+                {
+                    for (int i = 0; i < informationLength; i++)
+                    {
+                        int temp;
+
+                        int value = Int32.Parse(entries[i]);
+
+                        if (!BitScanReverse(out temp, (uint)value - 1))
+                            temp = 0;
+                        if (temp == 31)
+                            temp = 0;
+
+                        //Console.WriteLine("BSR: {0} Bitcount: {1}", temp+1, bitCount);
+                        int bits = br.Read(temp + 1);
+                    }
+                }
+
+                output.SuperUnique = false;
+
+                output.HasFlags = br.ReadBit();
+                if (output.HasFlags)
+                {
+                    output.Champion = br.ReadBit();
+                    output.Unique = br.ReadBit();
+                    output.SuperUnique = br.ReadBit();
+                    output.IsMinion = br.ReadBit();
+                    output.Ghostly = br.ReadBit();
+                    //Console.WriteLine("{0} {1} {2} {3} {4}", output.Champion, output.Unique, output.SuperUnique, output.IsMinion, output.Ghostly);
+                }
+
+                if (output.SuperUnique)
+                {
+                    output.SuperUniqueId = br.ReadBitsLittleEndian(16);
+                    String name;
+                    if (!DataManager.Instance.m_superUniques.Get(output.SuperUniqueId, out name))
+                    {
+                        Logger.Write("Failed to lookup super unique monster name for {0}", output.SuperUniqueId);
+                        output.Name = "invalid";
+                    }
+                    else
+                    {
+                        output.Name = name;
+                        //Console.WriteLine("NPC: {0}", name);
+                    }
+                }
+                else
+                    lookupName = true;
+
+                if (data.Count > 17 && lookupName != true && output.Name != "invalid")
+                {
+                    output.IsLightning = false;
+                    while (true)
+                    {
+                        byte mod = (byte)br.ReadBitsLittleEndian(8);
+                        if (mod == 0)
+                            break;
+                        if (mod == 0x11)
+                            output.IsLightning = true;
+                    }
+                }
+            }
+            else
+                lookupName = true;
+
+            if (lookupName)
+            {
+                String name;
+                if (!DataManager.Instance.m_monsterNames.Get((int)output.Type, out name))
+                    Console.WriteLine("Failed to Look up monster name for {0}", output.Type);
+                else
+                    output.Name = name;
+
+                //Console.WriteLine("NPC: {0}", name);
+            }
+
+            AddNpcEvent(output);
         }
         protected void VoidRequest(byte type, List<byte> data)
         {
-            Logger.Write("Unknown Packet 0x{0:X2} received!", type);
+            //Logger.Write("Unknown Packet 0x{0:X2} received!", type);
         }
 
     }

@@ -25,8 +25,8 @@ namespace BattleNet.Items
         public static byte[] IstRune2Packet = {0x9d, 0x13, 0x19, 0x10, 0x49, 0x00, 0x00, 0x00, 0x04, 0x47,
                    0x00, 0x00, 0x00, 0x18, 0x00, 0xa0, 0x08, 0x65, 0x18, 0x02,
                    0x20, 0x27, 0x43, 0x03, 0x02, 0xfd};
-
-        static void Main(string[] args)
+        
+        public static void Start(string[] args)
         {
             List<byte> packet = new List<byte>();
             packet.AddRange(ShaftstopPacket);
@@ -40,8 +40,7 @@ namespace BattleNet.Items
             packet.Clear();
             packet.AddRange(IstRune2Packet);
             item = Items.Parser.Parse(packet);
-
-
         }
+        
     }
 }

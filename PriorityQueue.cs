@@ -28,6 +28,10 @@ namespace BattleNet
                 queueLock.ExitWriteLock();
             }
         }
+        public void Clear()
+        {
+            list.Clear();
+        }
         public V Dequeue()
         {   
             V v;

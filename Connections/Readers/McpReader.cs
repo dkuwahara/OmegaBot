@@ -25,7 +25,6 @@ namespace BattleNet.Connections.Readers
                     break;
                 }
                 
-                Logger.Write("Queueing a packet!");
                 lock (m_connection.Packets)
                 {
                     m_connection.Packets.Enqueue(1, data);

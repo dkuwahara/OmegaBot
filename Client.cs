@@ -25,15 +25,16 @@ namespace BattleNet
 #region Constructors
         
         public Client(IPAddress server, String character, String account, String password, 
-                      GameDifficulty difficulty, String classicKey, String expansionKey, String exeInfo)
+                      GameDifficulty difficulty, String classicKey, String expansionKey, String exeInfo, 
+                      UInt32 chickenLife, UInt32 potLife)
         {
             // Create objects
             m_status = Status.STATUS_UNINITIALIZED;
             m_difficulty = difficulty;
+            m_d2gs = new D2GS(character, account, chickenLife, potLife);
             m_bnet = new Bnet(server, character, account, password, 
                               difficulty, classicKey, expansionKey, exeInfo);
 
-            m_d2gs = new D2GS(character, account);
             m_gameCreationThread = new Thread(GameCreationThread);
 
             m_bnet.SubscribeStatusUpdates(UpdateStatus);
@@ -116,7 +117,7 @@ namespace BattleNet
             while (true)
             {
                 Logging.Logger.Write("Signalled to start creating a game");
-                Thread.Sleep(20000);
+                Thread.Sleep(35000);
                 switch(m_nextGame)
                 {
                     case NextGameType.RUN_BOT:
@@ -143,17 +144,20 @@ namespace BattleNet
         }
 
         #endregion
-
+        
         static void Main(string[] args)
         {
+            //Items.ItemTestHarness.Start();
             Logging.Logger.InitTrace();
-
+            Pickit.InitializePickit();
             Client client = new Client(System.Net.Dns.GetHostAddresses("useast.battle.net").First(),
                                         null, args[0], args[1],
-                                        GameDifficulty.NORMAL,
+                                        GameDifficulty.HELL,
                                         args[2], args[3],
-                                        "Game.exe 03/09/10 04:10:51 61440");
+                                        "Game.exe 03/09/10 04:10:51 61440", 250, 300);
             client.Connect();
         }
+        
+       
     }
 }

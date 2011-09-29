@@ -7,18 +7,18 @@ namespace BattleNet
 {
     class Coordinate
     {
-        protected Int32 m_x;
-        public Int32 X { get { return m_x; } set { m_x = value; } }
+        protected UInt16 m_x;
+        public UInt16 X { get { return m_x; } set { m_x = value; } }
 
-        protected Int32 m_y;
-        public Int32 Y { get { return m_y; } set { m_y = value; }  }
+        protected UInt16 m_y;
+        public UInt16 Y { get { return m_y; } set { m_y = value; }  }
 
         public Coordinate()
         {
 
         }
 
-        public Coordinate(Int32 x, Int32 y)
+        public Coordinate(UInt16 x, UInt16 y)
         {
             m_x = x;
             m_y = y;

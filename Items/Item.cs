@@ -12,14 +12,14 @@ namespace BattleNet
         public String Name;
         public String Type;
         public Item.ClassificationType Classification;
-        public UInt32 Width, Height;
+        public UInt16 Width, Height;
         public Boolean Stackable, Usable, Throwable;
 
         public ItemEntry()
         {
 
         }
-        public ItemEntry(String name, String type, Item.ClassificationType classification, UInt32 width, UInt32 height, Boolean stackable, Boolean usable, Boolean throwable)
+        public ItemEntry(String name, String type, Item.ClassificationType classification, UInt16 width, UInt16 height, Boolean stackable, Boolean usable, Boolean throwable)
         {
             Name            = name;
             Type            = type;
@@ -110,8 +110,8 @@ namespace BattleNet
 
 
 
-        public Int32 width;
-        public Int32 height;
+        public UInt16 width;
+        public UInt16 height;
 
         public UInt32 category;
         public UInt32 id;

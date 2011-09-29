@@ -42,7 +42,7 @@ namespace BattleNet
             m_directoryKnown = false;
         }
 
-        public Player(String name, UInt32 id, Globals.CharacterClassType class_, UInt32 level, Int32 x, Int32 y) 
+        public Player(String name, UInt32 id, Globals.CharacterClassType class_, UInt32 level, UInt16 x, UInt16 y) 
             : base(id,x,y)
         {
             m_name = name;

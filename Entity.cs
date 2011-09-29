@@ -22,7 +22,7 @@ namespace BattleNet
             m_location = new Coordinate(0, 0);
         }
 
-        public Entity(UInt32 id, Int32 x, Int32 y)
+        public Entity(UInt32 id, UInt16 x, UInt16 y)
         {
             m_initialized = true;
             m_id = id;

@@ -51,7 +51,7 @@ namespace BattleNet.Connections.Handlers
 
         protected void OnStartMcpThread(IPAddress ip, ushort port, List<byte> data)
         {
-            Logging.Logger.Write("Starting the MCP");
+            //Logging.Logger.Write("Starting the MCP");
             StartMcpThread(ip, port, data);
         }
 
@@ -229,7 +229,7 @@ namespace BattleNet.Connections.Handlers
                 if (m_realm == null && i == 1)
                 {
                     OnRealmUpdate(realmTitle);
-                    Logging.Logger.Write("Logging on to realm {0}", realmTitle);
+                    //Logging.Logger.Write("Logging on to realm {0}", realmTitle);
                 }
             }
 
