@@ -147,6 +147,11 @@ namespace BattleNet
         
         static void Main(string[] args)
         {
+            if (args.Length < 4)
+            {
+                System.Console.WriteLine("Missing command line arguments");
+                return;
+            }
             //Items.ItemTestHarness.Start();
             Logging.Logger.InitTrace();
             Pickit.InitializePickit();

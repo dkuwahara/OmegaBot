@@ -1,0 +1,401 @@
+<?xml version="1.0"?>
+<ArrayOfItem>
+	<Item>
+		<Name>Unique Ring</Name>
+		<Type>rin</Type>
+		<ItemQuality>unique</ItemQuality>
+	</Item>
+	<ItemType>
+		<Name>Unique Amulet</Name>
+		<Type>amu</Type>
+		<ItemQuality>unique</ItemQuality>
+	</ItemType>
+
+	<ItemType>
+		<Name>Griffons Eye</Name>
+		<Type>ci3</Type>
+		<ItemQuality>unique</ItemQuality>
+		<IsEthereal>false</IsEthereal>
+	</ItemType>
+	<ItemType>
+		<Name>Harlequins Crest</Name>
+		<Type>uap</Type>
+		<ItemQuality>unique</ItemQuality>
+		<IsEthereal>false</IsEthereal>
+	</ItemType>
+	<ItemType>
+		<Name>Nightwings Veil</Name>
+		<Type>uhm</Type>
+		<ItemQuality>unique</ItemQuality>
+		<IsEthereal>false</IsEthereal>
+	</ItemType>
+	<ItemType>
+		<Name>Andarials Visage</Name>
+		<Type>usk</Type>
+		<ItemQuality>unique</ItemQuality>
+		<IsEthereal>false</IsEthereal>
+	</ItemType>
+	<ItemType>
+		<Name>Crown of Ages</Name>
+		<Type>urn</Type>
+		<ItemQuality>unique</ItemQuality>
+		<IsEthereal>false</IsEthereal>
+	</ItemType>
+	<ItemType>
+		<Name>Giant Skull</Name>
+		<Type>uh9</Type>
+		<ItemQuality>unique</ItemQuality>
+		<IsEthereal>true</IsEthereal>
+	</ItemType>	
+	
+	<ItemType>
+		<Name>Zod Rune</Name>
+		<Type>r33</Type>
+		<ItemQuality>normal</ItemQuality>
+	</ItemType>
+	<ItemType>
+		<Name>Cham Rune</Name>
+		<Type>r32</Type>
+		<ItemQuality>normal</ItemQuality>
+	</ItemType>
+		<ItemType>
+		<Name>Jah Rune</Name>
+		<Type>r31</Type>
+		<ItemQuality>normal</ItemQuality>
+	</ItemType>
+	<ItemType>
+		<Name>BerRune</Name>
+		<Type>r30</Type>
+		<ItemQuality>normal</ItemQuality>
+	</ItemType>
+	<ItemType>
+		<Name>Sur Rune</Name>
+		<Type>r29</Type>
+		<ItemQuality>normal</ItemQuality>
+	</ItemType>
+	<ItemType>
+		<Name>Lo Rune</Name>
+		<Type>r28</Type>
+		<ItemQuality>normal</ItemQuality>
+	</ItemType>
+	<ItemType>
+		<Name>Ohm Rune</Name>
+		<Type>r27</Type>
+		<ItemQuality>normal</ItemQuality>
+	</ItemType>	
+	<ItemType>
+		<Name>Vex Rune</Name>
+		<Type>r26</Type>
+		<ItemQuality>normal</ItemQuality>
+	</ItemType>
+	<ItemType>
+		<Name>GulRune</Name>
+		<Type>r25</Type>
+		<ItemQuality>normal</ItemQuality>
+	</ItemType>
+	<ItemType>
+		<Name>Ist Rune</Name>
+		<Type>r24</Type>
+		<ItemQuality>normal</ItemQuality>
+	</ItemType>
+		<ItemType>
+		<Name>Mal Rune</Name>
+		<Type>r23</Type>
+		<ItemQuality>normal</ItemQuality>
+	</ItemType>
+		<ItemType>
+		<Name>Um Rune</Name>
+		<Type>r22</Type>
+		<ItemQuality>normal</ItemQuality>
+	</ItemType>
+		<ItemType>
+		<Name>Pul Rune</Name>
+		<Type>r21</Type>
+		<ItemQuality>normal</ItemQuality>
+	</ItemType>
+	<ItemType>
+		<Name>Rainbow Facet</Name>
+		<Type>jew</Type>
+		<ItemQuality>unique</ItemQuality>
+	</ItemType>
+
+	<ItemType>
+		<Name>Arkaine's Valor</Name>
+		<Type>up1</Type>
+		<ItemQuality>unique</ItemQuality>
+	</ItemType>
+	<ItemType>
+		<Name>Tyraels/Templars</Name>
+		<Type>uar</Type>
+		<ItemQuality>unique</ItemQuality>
+	</ItemType>
+	<ItemType>
+		<Name>Ormus</Name>
+		<Type>uui</Type>
+		<ItemQuality>unique</ItemQuality>
+	</ItemType>
+	<ItemType>
+		<Name>Vipermagi</Name>
+		<Type>xea</Type>
+		<ItemQuality>unique</ItemQuality>
+	</ItemType>
+	
+	<ItemType>
+		<Name>Stormshield</Name>
+		<Type>uit</Type>
+		<ItemQuality>unique</ItemQuality>
+	</ItemType>
+
+	<ItemType>
+		<Name>Steelrend</Name>
+		<Type>uhq</Type>
+		<ItemQuality>unique</ItemQuality>
+	</ItemType>
+	<ItemType>
+		<Name>Dracs</Name>
+		<Type>uvg</Type>
+		<ItemQuality>unique</ItemQuality>
+	</ItemType>
+
+	<ItemType>
+		<Name>Sandstorm Treks</Name>
+		<Type>uvb</Type>
+		<ItemQuality>unique</ItemQuality>
+	</ItemType>
+	<ItemType>
+		<Name>Marrowwalk</Name>
+		<Type>umb</Type>
+		<ItemQuality>unique</ItemQuality>
+	</ItemType>
+	<ItemType>
+		<Name>Shadow Dancer</Name>
+		<Type>uhb</Type>
+		<ItemQuality>unique</ItemQuality>
+	</ItemType>
+	<ItemType>
+		<Name>War Travs</Name>
+		<Type>xtb</Type>
+		<ItemQuality>unique</ItemQuality>
+	</ItemType>
+
+	<ItemType>
+		<Name>Arachnid's Mesh</Name>
+		<Type>ulc</Type>
+		<ItemQuality>unique</ItemQuality>
+	</ItemType>
+	<ItemType>
+		<Name>Dungos</Name>
+		<Type>umc</Type>
+		<ItemQuality>unique</ItemQuality>
+	</ItemType>
+	<ItemType>
+		<Name>Thunder Gods Vigor</Name>
+		<Type>zhb</Type>
+		<ItemQuality>unique</ItemQuality>
+	</ItemType>
+
+	<ItemType>
+		<Name>Deaths Web</Name>
+		<Type>7gw</Type>
+		<ItemQuality>unique</ItemQuality>
+	</ItemType>
+	<ItemType>
+		<Name>Wizard Spike</Name>
+		<Type>7dg</Type>
+		<ItemQuality>unique</ItemQuality>
+	</ItemType>
+	<ItemType>
+		<Name>Rune Master</Name>
+		<Type>72a</Type>
+		<ItemQuality>unique</ItemQuality>
+	</ItemType>
+	<ItemType>
+		<Name>Death Cleaver</Name>
+		<Type>7wa</Type>
+		<ItemQuality>unique</ItemQuality>
+	</ItemType>
+	<ItemType>
+		<Name>Tomb Reaver</Name>
+		<Type>7pa</Type>
+		<ItemQuality>unique</ItemQuality>
+	</ItemType>
+	<ItemType>
+		<Name>Lightsabre</Name>
+		<Type>7cr</Type>
+		<ItemQuality>unique</ItemQuality>
+	</ItemType>
+	<ItemType>
+		<Name>Ondals</Name>
+		<Type>6cs</Type>
+		<ItemQuality>unique</ItemQuality>
+	</ItemType>
+
+	<ItemType>
+		<Name>Alma Negra</Name>
+		<Type>pac</Type>
+		<ItemQuality>unique</ItemQuality>
+	</ItemType>
+	<ItemType>
+		<Name>Herald</Name>
+		<Type>pa9</Type>
+		<ItemQuality>unique</ItemQuality>
+	</ItemType>
+	<ItemType>
+		<Name>Titan's Revenge</Name>
+		<Type>ama</Type>
+		<ItemQuality>unique</ItemQuality>
+	</ItemType>
+	<ItemType>
+		<Name>Thunderstrokes</Name>
+		<Type>amf</Type>
+		<ItemQuality>unique</ItemQuality>
+	</ItemType>
+	<ItemType>
+		<Name>Arreats Face</Name>
+		<Type>baa</Type>
+		<ItemQuality>unique</ItemQuality>
+	</ItemType>
+	<ItemType>
+		<Name>Wolfhowl</Name>
+		<Type>bac</Type>
+		<ItemQuality>unique</ItemQuality>
+	</ItemType>
+	<ItemType>
+		<Name>Halaberds</Name>
+		<Type>bae</Type>
+		<ItemQuality>unique</ItemQuality>
+	</ItemType>
+
+	<ItemType>
+		<Name>Death's Fathom</Name>
+		<Type>obf</Type>
+		<ItemQuality>unique</ItemQuality>
+	</ItemType>
+	<ItemType>
+		<Name>Eschutas</Name>
+		<Type>obc</Type>
+		<ItemQuality>unique</ItemQuality>
+	</ItemType>
+
+	<ItemType>
+		<Name>Tal Rasha's Armor</Name>
+		<Type>uth</Type>
+		<ItemQuality>set</ItemQuality>
+	</ItemType>
+	<ItemType>
+		<Name>Tal Rasha's Amulet</Name>
+		<Type>amu</Type>
+		<ItemQuality>set</ItemQuality>
+	</ItemType>
+	<ItemType>
+		<Name>Tal Rasha's Orb</Name>
+		<Type>oba</Type>
+		<ItemQuality>set</ItemQuality>
+	</ItemType>
+	<ItemType>
+		<Name>Tal Rasha's Belt</Name>
+		<Type>zmb</Type>
+		<ItemQuality>set</ItemQuality>
+	</ItemType>
+
+	<ItemType>
+		<Name>Chance Guards</Name>
+		<Type>mg1</Type>
+		<ItemQuality>unique</ItemQuality>
+	</ItemType>
+	<ItemType>
+		<Name>Skullders</Name>
+		<Type>xpl</Type>
+		<ItemQuality>unique</ItemQuality>
+	</ItemType>
+	<ItemType>
+		<Name>Vamp Gaze</Name>
+		<Type>xh9</Type>
+		<ItemQuality>unique</ItemQuality>
+	</ItemType>
+	<ItemType>
+		<Name>Glad Bane</Name>
+		<Type>utu</Type>
+		<ItemQuality>unique</ItemQuality>
+	</ItemType>
+	<ItemType>
+		<Name>Oculus</Name>
+		<Type>oba</Type>
+		<ItemQuality>unique</ItemQuality>
+	</ItemType>
+	
+	<ItemType>
+		<Name>Moser's</Name>
+		<Type>xml</Type>
+		<ItemQuality>unique</ItemQuality>
+	</ItemType>
+	<ItemType>
+		<Name>Duriel's</Name>
+		<Type>xrs</Type>
+		<ItemQuality>unique</ItemQuality>
+	</ItemType>
+	<ItemType>
+		<Name>Shaftstop</Name>
+		<Type>xhn</Type>
+		<ItemQuality>unique</ItemQuality>
+	</ItemType>
+
+	<ItemType>
+		<Name>Waterwalk</Name>
+		<Type>xvb</Type>
+		<ItemQuality>unique</ItemQuality>
+	</ItemType>
+
+	
+
+	<ItemType>
+		<Name>Cryptic Axe</Name>
+		<Type>7pa</Type>
+		<ItemQuality>superior</ItemQuality>
+		<HasSockets>true</HasSockets>
+		<SocketCount>4</SocketCount>
+		<IsEthereal>true</IsEthereal>
+	</ItemType>
+	<ItemType>
+		<Name>Colossus Voulge</Name>
+		<Type>7vc</Type>
+		<ItemQuality>superior</ItemQuality>
+		<HasSockets>true</HasSockets>
+		<SocketCount>4</SocketCount>
+		<IsEthereal>true</IsEthereal>
+	</ItemType>
+	<ItemType>
+		<Name>Great Poleaxe</Name>
+		<Type>7h7</Type>
+		<ItemQuality>superior</ItemQuality>
+		<HasSockets>true</HasSockets>
+		<SocketCount>4</SocketCount>
+		<IsEthereal>true</IsEthereal>
+	</ItemType>
+	<ItemType>
+		<Name>Giant Thresh</Name>
+		<Type>7wc</Type>
+		<ItemQuality>superior</ItemQuality>
+		<HasSockets>true</HasSockets>
+		<SocketCount>4</SocketCount>
+		<IsEthereal>true</IsEthereal>
+	</ItemType>
+	<ItemType>
+		<Name>Thresher</Name>
+		<Type>7s8</Type>
+		<ItemQuality>superior</ItemQuality>
+		<HasSockets>true</HasSockets>
+		<SocketCount>4</SocketCount>
+		<IsEthereal>true</IsEthereal>
+	</ItemType>
+	
+	<ItemType>
+		<Name>Gold</Name>
+		<Type>gld</Type>
+	</ItemType>
+	<ItemType>
+		<Name>Rejuv</Name>
+		<Type>rvl</Type>
+		<ItemQuality>normal</ItemQuality>
+	</ItemType>
+</ArrayOfItem>
