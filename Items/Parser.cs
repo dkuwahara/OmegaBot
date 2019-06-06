@@ -277,6 +277,7 @@ namespace BattleNet.Items
                 getLocation(reader, ref item);
                 if (EarInfo(reader, ref item)) return item;
                 if (GetItemType(reader, ref item)) return item;
+                GetSocketInfo(reader, ref item);
                 if (!GetLevelQuality(reader, ref item)) return item;
                 GetGraphicInfo(reader, ref item);
                 GetIdentifiedInfo(reader, ref item); // get nova to help with this
@@ -286,8 +287,5 @@ namespace BattleNet.Items
             }
             return item;
         }
-
-
-
     }
 }
